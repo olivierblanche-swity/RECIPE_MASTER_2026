@@ -28,8 +28,10 @@ function findBestByOrderLimit(PDO $connexion, string $order = 'ROUND(AVG(rt.valu
     $rs->bindValue(':limit', $limit, PDO::PARAM_INT);
 
     $rs->execute();
-    $bestRecipes = $rs->fetchAll(PDO::FETCH_ASSOC);
+    $recipes = $rs->fetchAll(PDO::FETCH_ASSOC);
     $rs->closeCursor();
     unset($rs);
-    return $bestRecipes;
+    return $recipes;
 }
+
+
