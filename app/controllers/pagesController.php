@@ -11,6 +11,10 @@ function homeAction(PDO $conn)
     /*  on va cherhcer  la fonction dans le dossier models */
     include_once '../app/models/recipesModel.php';
     $randRecipes = RecipesModel\findOneByRand($conn, 'RAND()', 1);
+    $bestRecipes = RecipesModel\findBestByOrderLimit($conn,'ROUND(AVG(rt.value)) DESC', 3);
+
+     /* on va cherhcer  la fonction dans le dossier models */
+
  /* on lance le tampon et on inclu la vue dedans  */
 
 
