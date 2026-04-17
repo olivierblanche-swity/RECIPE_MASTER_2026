@@ -33,13 +33,11 @@
     <h2 class="text-2xl font-bold mb-4">Recettes populaires</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <?php foreach ($recipes as $recipe) : ?>
-            <article
-                class="bg-white rounded-lg overflow-hidden shadow-lg relative">
-                <!-- Recipe Card -->
 
-                <?php include '../app/views/recipes/_card.php'; ?>
 
-            </article>
+            <?php include '../app/views/recipes/_card.php'; ?>
+
+
         <?php endforeach; ?>
     </div>
 </section>
@@ -50,7 +48,7 @@
     <div class="flex items-center mb-6">
         <!-- User Avatar -->
         <img
-            src="https://source.unsplash.com/300x300/?portrait"
+            src="../documents/pictures/<?php echo $userInfo['picture']; ?>"
             alt="<?php echo $userInfo['name']; ?>"
             class="w-24 h-24 rounded-full border-4 border-yellow-500 mr-4" />
 
@@ -65,7 +63,7 @@
     <!-- User Actions -->
     <div class="flex justify-between items-center mb-4">
         <a
-            href="?results=user_recipes&id=<?php echo $userInfo['user_id']; ?>"
+            href="?recipes=user_id&user_id=<?php echo $userInfo['user_id']; ?>"
             class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 rounded-full px-6 py-2">Voir mes recettes</a>
     </div>
 
