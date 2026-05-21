@@ -5,7 +5,7 @@
     <div class="flex items-center mb-6">
         <!-- randomUser Avatar -->
         <img
-            src="pictures/<?php echo $randomUser[0]['user_picture']; ?>"
+            src="./pictures/<?php echo $randomUser[0]['user_picture']; ?>"
             alt="<?php echo $randomUser[0]['user_name']; ?>"
             class="w-24 h-24 rounded-full border-4 border-yellow-500 mr-4" />
 

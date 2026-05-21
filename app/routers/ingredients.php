@@ -2,7 +2,7 @@
 
 use App\Controllers\IngredientsController;
 
-include_once '../app/controllers/ingredientsController.php';
+include '../app/controllers/ingredientsController.php';
 
 switch ($_GET['ingredients']) :
 

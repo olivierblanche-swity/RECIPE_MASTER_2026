@@ -2,7 +2,7 @@
 
 use App\Controllers\CategoriesController;
 
-include_once '../app/controllers/categoriesController.php';
+include '../app/controllers/categoriesController.php';
 
 switch ($_GET['categories']) :
     
@@ -11,7 +11,5 @@ switch ($_GET['categories']) :
         CategoriesController\showAction($conn, $_GET['id']);
         break;
 
-    default:
-        CategoriesController\indexAction($conn);
-        break;  
+   
 endswitch;

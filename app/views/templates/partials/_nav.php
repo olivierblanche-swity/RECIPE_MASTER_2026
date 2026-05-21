@@ -39,10 +39,10 @@
                             class="p-2 rounded-md" />
                         <a
                             class="text-white hover:text-yellow-500 px-3 py-2"
-                            href="?recipes">Recettes</a>
+                            href="?recipes=index">Recettes</a>
                         <a
                             class="text-white hover:text-yellow-500 px-3 py-2"
-                            href="?users">Chefs</a>
+                            href="?users=index">Chefs</a>
                     </div>
                 </div>
             </div>
@@ -51,8 +51,8 @@
                     type="text"
                     placeholder="Rechercher une recette..."
                     class="p-2 w-full" />
-                <a class="block text-white hover:text-yellow-500 px-3 py-2" href="?recipes">Recettes</a>
-                <a class="block text-white hover:text-yellow-500 px-3 py-2" href="?chefs">Chefs</a>
+                <a class="block text-white hover:text-yellow-500 px-3 py-2" href="?recipes=index">Recettes</a>
+                <a class="block text-white hover:text-yellow-500 px-3 py-2" href="?users=index">Chefs</a>
             </div>
         </nav>
     </div>

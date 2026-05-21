@@ -2,10 +2,10 @@
 
 namespace App\Controllers\RecipesController;
 
-use App\Models\RecipesModel;
-use App\Models\IngredientsModel;
-use App\Models\CommentsModel;
-use PDO;
+use \App\Models\RecipesModel;
+use \App\Models\IngredientsModel;
+use \App\Models\CommentsModel;
+use \PDO;
 
 function indexAction(PDO $conn)
 {

@@ -4,7 +4,7 @@
     
       <img
         class="w-full h-96 object-cover"
-        src="../documents/pictures/<?php echo $user['picture']; ?>"
+        src="./pictures/<?php echo $user['picture']; ?>"
         alt="<?php echo $user['name']; ?>" />
       <div
         class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-gray-900 to-transparent">

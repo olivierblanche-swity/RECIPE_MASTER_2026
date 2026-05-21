@@ -2,8 +2,8 @@
 
 namespace App\Controllers\CategoriesController;
 
-use App\Models\CategoriesModel;
-use PDO;
+use \App\Models\CategoriesModel;
+use \PDO;
 
 function showAction(PDO $conn, int $id)
 {

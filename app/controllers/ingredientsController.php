@@ -2,8 +2,8 @@
 
 namespace App\Controllers\IngredientsController;
 
-use App\Models\IngredientsModel;
-use PDO;
+use \App\Models\IngredientsModel;
+use \PDO;
 
 function showAction(PDO $conn, int $id)
 {

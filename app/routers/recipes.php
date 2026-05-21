@@ -2,7 +2,7 @@
 
 use App\Controllers\RecipesController;
 
-include_once '../app/controllers/recipesController.php';
+include '../app/controllers/recipesController.php';
 
 switch ($_GET['recipes']):
 
@@ -17,6 +17,7 @@ switch ($_GET['recipes']):
         break;
 
     default:
+        
         RecipesController\indexAction($conn);
         break;
 

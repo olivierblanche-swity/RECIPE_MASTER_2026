@@ -2,8 +2,8 @@
 
 namespace App\Controllers\PagesController;
 
-use App\Models\RecipesModel;
-use App\Models\UsersModel;
+use \App\Models\RecipesModel;
+use \App\Models\UsersModel;
 
 use \PDO;
 
