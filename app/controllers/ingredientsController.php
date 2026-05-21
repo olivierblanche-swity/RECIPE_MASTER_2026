@@ -18,3 +18,4 @@ function showAction(PDO $conn, int $id)
     include '../app/views/recipes/index.php';
     $content = ob_get_clean();
 }
+

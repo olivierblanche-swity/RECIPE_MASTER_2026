@@ -1,5 +1,5 @@
-
-  <?php foreach ($users as $user): ?>
+<?php /** @var array $user */ ?>
+  
   <section class="relative mb-6">
     
       <img
@@ -17,4 +17,4 @@
       </div>
    
   </section>
-   <?php endforeach; ?>
+

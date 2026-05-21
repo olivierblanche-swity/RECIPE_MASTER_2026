@@ -1,3 +1,5 @@
+<?php /** @var array $recipes */ ?>
+
 <div class=" p-3">
 
   <!-- User's Recipes -->

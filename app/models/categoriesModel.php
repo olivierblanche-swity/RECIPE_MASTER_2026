@@ -33,7 +33,7 @@ function findOneByID(PDO $connexion, int $id): array
 
 function findAllById(PDO $connexion, int $id): array
 {
-    $sql = "SELECT  r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(rt.value)) AS average_rating, COUNT(DISTINCT c.id) AS comment_count, tor.name AS category_name
+    $sql = "SELECT  r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(rt.value),1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count, tor.name AS category_name
             FROM recipes r
             JOIN users u ON r.user_id = u.id
             LEFT JOIN ratings rt ON r.id = rt.recipe_id
