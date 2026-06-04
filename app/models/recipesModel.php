@@ -9,7 +9,7 @@ function findOneByRand(PDO $conn): array
     /* requete SQL - Appel de la stored procedure */
     $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, 
                 u.name AS user_name, 
-                ROUND(AVG(rt.value),1) AS average_rating, 
+                ROUND(AVG(DISTINCT rt.value),1) AS average_rating, 
                 COUNT(DISTINCT c.id) AS comment_count
             FROM recipes r
             JOIN users u ON r.user_id = u.id
@@ -25,30 +25,21 @@ function findOneByRand(PDO $conn): array
 
 function findAllPopulars(PDO $conn): array
 {
-    /* requete SQL - Appel de la stored procedure */
-    $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, 
-                u.name AS user_name, 
-                ROUND(AVG(rt.value), 1) AS average_rating, 
-                COUNT(c.id) AS comment_count
-            FROM recipes r
-            JOIN users u ON r.user_id = u.id
-            LEFT JOIN ratings rt ON r.id = rt.recipe_id
-            LEFT JOIN comments c ON r.id = c.recipe_id
-            GROUP BY r.id
-            ORDER BY average_rating DESC
-            LIMIT 3;";
+    $sql = "CALL GetPopularRecipes()";
+
     $rs = $conn->query($sql);
-    $popularsRecipes = $rs->fetchAll(PDO::FETCH_ASSOC);
+    $popularRecipes = $rs->fetchAll(PDO::FETCH_ASSOC);
+
     $rs->closeCursor();
     unset($rs);
-    return $popularsRecipes;
-}
 
+    return $popularRecipes;
+}
 
 function findAll(PDO $conn): array
 {
     /* requete SQL - Appel de la stored procedure */
-    $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(rt.value), 1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
+    $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(DISTINCT rt.value), 1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
             FROM recipes r
             JOIN users u ON r.user_id = u.id
             LEFT JOIN ratings rt ON r.id = rt.recipe_id
@@ -65,7 +56,7 @@ function findAll(PDO $conn): array
 function findAllByUserId(PDO $conn, int $id): array
 {
     /* requete SQL - Appel de la stored procedure */
-    $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(rt.value),1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
+    $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(DISTINCT rt.value),1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
             FROM recipes r
             JOIN users u ON r.user_id = u.id
             LEFT JOIN ratings rt ON r.id = rt.recipe_id
@@ -82,10 +73,11 @@ function findAllByUserId(PDO $conn, int $id): array
     unset($rs);
     return $userRecipes;
 }
+
 function findAllRecipesByUserId(PDO $conn, int $id): array
 {
     /* requete SQL - Appel de la stored procedure */
-    $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(rt.value),1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
+    $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(DISTINCT rt.value),1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
             FROM recipes r
             JOIN users u ON r.user_id = u.id
             LEFT JOIN ratings rt ON r.id = rt.recipe_id
@@ -119,10 +111,11 @@ function findOneById(PDO $conn, int $id): array
     unset($rs);
     return $recipe;
 }
+
 function searchByName(PDO $conn, string $query): array
 {
     /* requete SQL - Appel de la stored procedure */
-    $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(rt.value), 1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
+    $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(DISTINCT rt.value), 1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
             FROM recipes r
             JOIN users u ON r.user_id = u.id
             LEFT JOIN ratings rt ON r.id = rt.recipe_id

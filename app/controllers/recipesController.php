@@ -53,7 +53,8 @@ function showAction(PDO $conn, int $id)
 
     /* on lance le tampon et on inclu la vue dedans  */
     global $content, $title;
-    $title = "Recette : " . $recipe['recipe_name'];
+    $title = $recipe['recipe_name'] . " (" . count($comments) . " commentaires)";
+
     ob_start();
     include '../app/views/recipes/show.php';
     $content = ob_get_clean();

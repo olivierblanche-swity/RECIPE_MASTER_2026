@@ -10,10 +10,19 @@ use PDO;
 function indexAction(PDO $conn)
 {
     /*  on va cherhcer  la fonction dans le dossier models */
-    
+
     include_once '../app/models/usersModel.php';
+    include_once '../app/models/recipesModel.php';
+
     $users = UsersModel\findAll($conn);
-    
+
+    foreach ($users as &$user) {
+        $user['recipes'] = RecipesModel\findAllByUserId($conn, $user['user_id']);
+    }
+    unset($user);
+
+
+
 
     /* on lance le tampon et on inclu la vue dedans  */
     global $content, $title;
@@ -35,4 +44,4 @@ function showAction(PDO $conn, int $id)
     ob_start();
     include '../app/views/users/show.php';
     $content = ob_get_clean();
-}   
+}
