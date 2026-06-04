@@ -6,6 +6,11 @@ include '../app/controllers/recipesController.php';
 
 switch ($_GET['recipes']):
 
+    case 'search':
+
+        RecipesController\searchAction($conn, $_GET['query']);
+        break;
+
     case 'user_id':
 
         RecipesController\indexByUserAction($conn, $_GET['user_id']);

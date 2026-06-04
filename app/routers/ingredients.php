@@ -4,14 +4,14 @@ use App\Controllers\IngredientsController;
 
 include '../app/controllers/ingredientsController.php';
 
-switch ($_GET['ingredients']) :
+switch ($_GET['ingredients']):
 
-     case 'show':
-       
+    case 'show':
+
         IngredientsController\showAction($conn, $_GET['id']);
         break;
 
     default:
-       
-        break;  
+        \App\Controllers\PagesController\homeAction($conn);
+        break;
 endswitch;

@@ -7,9 +7,11 @@ use \PDO;
 function findAll(PDO $conn): array
 {
     /* requete SQL */
-    $sql = "SELECT * , id AS ingredientID
-            FROM ingredients
-            ORDER BY name ASC;";
+    $sql = "SELECT i.*, i.id AS ingredientID, COUNT(DISTINCT ri.recipe_id) AS count_recipes
+            FROM ingredients i
+            LEFT JOIN recipes_has_ingredients ri ON i.id = ri.ingredient_id
+            GROUP BY i.id
+            ORDER BY i.name ASC;";
     $rs = $conn->query($sql);
     $ingredients = $rs->fetchAll(PDO::FETCH_ASSOC);
     $rs->closeCursor();
@@ -17,7 +19,7 @@ function findAll(PDO $conn): array
     return $ingredients;
 }
 
-function findOneByID(PDO $conn, int $id) :array
+function findOneByID(PDO $conn, int $id): array
 {
     $sql = "SELECT * , id AS ingredientID , name AS name
             FROM ingredients

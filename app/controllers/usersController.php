@@ -26,7 +26,7 @@ function indexAction(PDO $conn)
 function showAction(PDO $conn, int $id)
 {
     include_once '../app/models/usersModel.php';
-    $user = UsersModel\findById($conn, $id);
+    $user = UsersModel\findOneById($conn, $id);
     include_once '../app/models/recipesModel.php';
     $recipes = RecipesModel\findAllRecipesByUserId($conn, $id);
 

@@ -52,7 +52,7 @@ function findAll(PDO $conn): array
     return $users;
 }
 
-function findById(PDO $conn, int $id): ?array
+function findOneById(PDO $conn, int $id): ?array
 {
     $sql = "SELECT name AS name, picture AS picture, biography
             FROM users 

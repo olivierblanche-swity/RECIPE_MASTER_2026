@@ -58,3 +58,18 @@ function showAction(PDO $conn, int $id)
     include '../app/views/recipes/show.php';
     $content = ob_get_clean();
 }
+function searchAction(PDO $conn, string $query)
+{
+    /*  on va cherhcer  la fonction dans le dossier models */
+    include_once '../app/models/recipesModel.php';
+    $recipes = RecipesModel\searchByName($conn, $query);
+
+    /* on lance le tampon et on inclu la vue dedans  */
+    global $content, $title, $searchQuery;
+    $title = "Résultats de recherche pour : " . $query;
+    $searchQuery = $query;
+
+    ob_start();
+    include '../app/views/recipes/results.php';
+    $content = ob_get_clean();
+}
