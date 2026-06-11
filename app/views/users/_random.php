@@ -8,7 +8,7 @@
     <div class="flex items-center mb-6">
         <!-- randomUser Avatar -->
         <img
-            src="./pictures/<?php echo $randomUser['user_picture']; ?>"
+            src="../documents/pictures/<?php echo $randomUser['user_picture']; ?>"
             alt="<?php echo $randomUser['user_name']; ?>"
             class="w-24 h-24 rounded-full border-4 border-yellow-500 mr-4" />
 

@@ -68,7 +68,7 @@ function countRecipes(PDO $conn): int
 
 function findAllByUserId(PDO $conn, int $id): array
 {
-    /* requete SQL - Appel de la stored procedure */
+    
     $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(DISTINCT rt.value),1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
             FROM recipes r
             JOIN users u ON r.user_id = u.id
@@ -89,7 +89,7 @@ function findAllByUserId(PDO $conn, int $id): array
 
 function findAllRecipesByUserId(PDO $conn, int $id): array
 {
-    /* requete SQL - Appel de la stored procedure */
+    
     $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(DISTINCT rt.value),1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
             FROM recipes r
             JOIN users u ON r.user_id = u.id

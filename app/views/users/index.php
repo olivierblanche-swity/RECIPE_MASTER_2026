@@ -10,7 +10,7 @@
             <div class="flex items-center mb-6">
                 <!-- user Avatar -->
                 <img
-                    src="./pictures/<?php echo $user['user_picture']; ?>"
+                    src="../documents/pictures/<?php echo $user['user_picture']; ?>"
                     alt="<?php echo $user['user_name']; ?>"
                     class="w-24 h-24 rounded-full border-4 border-yellow-500 mr-4" />
 
