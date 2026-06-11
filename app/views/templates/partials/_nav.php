@@ -33,13 +33,14 @@
                     </button>
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
-                    <form action="" method="get">
+                    <form action="?recipes=search" method="get">
+                        <input type="hidden" name="recipes" value="search" />
                         <input
                             name="query"
                             type="text"
                             placeholder="Rechercher une recette..."
                             class="p-2 rounded-md" />
-                        <input type="hidden" name="recipes" value="search" />
+
                     </form>
                     <a
                         class="text-white hover:text-yellow-500 px-3 py-2"

@@ -4,6 +4,12 @@ use App\Controllers\RecipesController;
 
 include '../app/controllers/recipesController.php';
 
+$limit = 6;
+$currentPage = isset($_GET['p']) ? (int) $_GET['p'] : 1;
+if ($currentPage < 1) {
+    $currentPage = 1;
+}
+
 switch ($_GET['recipes']):
 
     case 'search':
@@ -22,8 +28,9 @@ switch ($_GET['recipes']):
         break;
 
     default:
-        
-        RecipesController\indexAction($conn);
+
+        RecipesController\indexAction($conn, $limit, $currentPage);
+
         break;
 
 endswitch;

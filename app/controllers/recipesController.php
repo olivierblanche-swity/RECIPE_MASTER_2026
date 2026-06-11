@@ -7,15 +7,21 @@ use \App\Models\IngredientsModel;
 use \App\Models\CommentsModel;
 use \PDO;
 
-function indexAction(PDO $conn)
+function indexAction(PDO $conn, int $limit, int $currentPage)
 {
     /*  on va cherhcer  la fonction dans le dossier models */
     include_once '../app/models/recipesModel.php';
-    $recipes = RecipesModel\findAll($conn);
+
+    $offset = ($currentPage - 1) * $limit;
+
+    $totalRecipes = RecipesModel\countRecipes($conn);
+    $totalPages = ceil($totalRecipes / $limit);
+
+    $recipes = RecipesModel\findAll($conn, $limit, $offset);
 
     /* on lance le tampon et on inclu la vue dedans  */
     global $content, $title;
-    $title = "Les Recettes";
+    $title = "Les Recettes: page " . $currentPage. " / ".$totalPages;
     ob_start();
     include '../app/views/recipes/index.php';
     $content = ob_get_clean();
@@ -74,3 +80,27 @@ function searchAction(PDO $conn, string $query)
     include '../app/views/recipes/results.php';
     $content = ob_get_clean();
 }
+/* fonction pour la recherche avancée avec plusieurs mots clés
+function searchAction(PDO $conn): void
+{
+    include_once '../app/models/recipesModel.php';
+
+    $query = $_GET['query'] ?? '';
+    $query = trim($query);
+
+    $recipes = [];
+
+    if ($query !== '') {
+        $recipes = RecipesModel\searchByWords($conn, $query);
+    }
+
+    global $content, $title, $searchQuery;
+
+    $title = "Résultats de recherche";
+    $searchQuery = $query;
+
+    ob_start();
+    include '../app/views/recipes/results.php';
+    $content = ob_get_clean();
+}
+ */
