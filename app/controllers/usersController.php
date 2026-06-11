@@ -16,14 +16,6 @@ function indexAction(PDO $conn)
 
     $users = UsersModel\findAll($conn);
 
-    foreach ($users as &$user) {
-        $user['recipes'] = RecipesModel\findAllByUserId($conn, $user['user_id']);
-    }
-    unset($user);
-
-
-
-
     /* on lance le tampon et on inclu la vue dedans  */
     global $content, $title;
     $title = "Les Chefs";

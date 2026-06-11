@@ -25,21 +25,21 @@ $totalPages = $totalPages ?? 1;
   </section>
   <!-- pagination -->
   <?php if ($totalPages > 1): ?>
-    <nav class="pagination flex gap-4 text-center max-w-xl mx-auto  pt-8">
+    <nav class="flex gap-4 text-center max-w-xl mx-auto  pt-8">
       <?php if ($currentPage > 1): ?>
 
-        <a href="?recipes=index&p=<?= $currentPage - 1 ?>" class="bg-blue-100 px-4 py-2 rounded">Précédent</a>
+        <a href="?recipes=index&p=<?= $currentPage - 1 ?>" class="bg-blue-100 px-4 py-2 rounded-full">Précédent</a>
       <?php endif; ?>
 
       <?php for ($i = 1; $i <= $totalPages; $i++): ?>
         <a href="?recipes=index&p=<?= $i ?>"
-          class="underline  p-2  rounded-full <?= $i === $currentPage ? 'active' : '' ?>">
+          class="p-2  rounded-full <?= $i === $currentPage ? 'underline font-bold' : '' ?>">
           <?= $i ?>
         </a>
       <?php endfor; ?>
 
       <?php if ($currentPage < $totalPages): ?>
-        <a href="?recipes=index&p=<?= $currentPage + 1 ?>" class="bg-blue-100 px-4 py-2 rounded">Suivant</a>
+        <a href="?recipes=index&p=<?= $currentPage + 1 ?>" class="bg-blue-100 px-4 py-2 rounded-full">Suivant</a>
       <?php endif; ?>
     </nav>
   <?php endif; ?>
