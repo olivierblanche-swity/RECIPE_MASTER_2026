@@ -9,13 +9,13 @@ function showAction(PDO $conn, int $id)
 {
     /*  on va cherhcer  la fonction dans le dossier models */
     include_once '../app/models/ingredientsModel.php';
-    $recipes = IngredientsModel\findAllById($conn , $id);
+    $ingredient = IngredientsModel\findOneByID($conn, $id);
+    $recipes = IngredientsModel\findAllById($conn, $id);
 
     /* on lance le tampon et on inclu la vue dedans  */
     global $content, $title;
-    $title = "Les Recettes de l'ingrédient : " . $recipes[0]['ingredient_name'];
+    $title = "Les Recettes de l'ingrédient : " . ($ingredient['name'] ?? '');
     ob_start();
     include '../app/views/recipes/index.php';
     $content = ob_get_clean();
 }
-
