@@ -21,7 +21,7 @@ function indexAction(PDO $conn, int $limit, int $currentPage)
 
     /* on lance le tampon et on inclu la vue dedans  */
     global $content, $title;
-    $title = "Les Recettes: page " . $currentPage. " / ".$totalPages;
+    $title = "Les Recettes: page " . $currentPage . " / " . $totalPages;
     ob_start();
     include '../app/views/recipes/index.php';
     $content = ob_get_clean();
@@ -31,11 +31,14 @@ function indexByUserAction(PDO $conn, int $id)
 {
     /*  on va cherhcer  la fonction dans le dossier models */
     include_once '../app/models/recipesModel.php';
+    include_once '../app/models/usersModel.php';
+
     $recipes = RecipesModel\findAllByUserId($conn, $id);
+    $users = \App\Models\UsersModel\findAll($conn);
 
     /* on lance le tampon et on inclu la vue dedans  */
     global $content, $title;
-    $title = "Les Recettes de " . $recipes[0]['user_name'];
+    $title = "Les Recettes de " . $user['user_name'];
     ob_start();
     include '../app/views/recipes/index.php';
     $content = ob_get_clean();
@@ -104,4 +107,3 @@ function searchAction(PDO $conn): void
     include '../app/views/recipes/results.php';
     $content = ob_get_clean();
 }
- 
