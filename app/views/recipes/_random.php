@@ -12,7 +12,7 @@
         </h1>
         <div class="flex items-center mb-4">
             <span class="text-yellow-500 mr-1"><i class="fas fa-star"></i></span>
-            <span class="text-white"><?php echo htmlspecialchars($randRecipes['average_rating']); ?></span>
+            <span class="text-white"><?php echo $randRecipes['average_rating']; ?></span>
         </div>
         <p class="text-gray-300 mb-4">
             <?php echo \Core\Helpers\truncate(htmlspecialchars($randRecipes['description']), 200); ?>

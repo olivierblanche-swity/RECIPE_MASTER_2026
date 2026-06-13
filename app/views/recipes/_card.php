@@ -10,7 +10,7 @@
         <h3 class="text-xl font-bold mb-2 text-gray-900"><?php echo htmlspecialchars($recipe['recipe_name']); ?></h3>
         <div class="flex items-center mb-2">
             <span class="text-yellow-500 mr-1"><i class="fas fa-star"></i></span>
-            <span class="text-gray-800"><?php echo htmlspecialchars($recipe['average_rating']); ?></span>
+            <span class="text-gray-800"><?php echo $recipe['average_rating']; ?></span>
         </div>
         <p class="text-gray-600"><?php echo \Core\Helpers\truncate(htmlspecialchars($recipe['description']), 100); ?></p>
         <div class="flex items-center mt-4">

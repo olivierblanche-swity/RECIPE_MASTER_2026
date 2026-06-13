@@ -15,6 +15,5 @@
           <?php echo htmlspecialchars($user['biography']); ?>
         </p>
       </div>
-   
   </section>
 

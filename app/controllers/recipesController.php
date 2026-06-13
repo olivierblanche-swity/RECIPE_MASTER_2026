@@ -38,7 +38,7 @@ function indexByUserAction(PDO $conn, int $id)
 
     /* on lance le tampon et on inclu la vue dedans  */
     global $content, $title;
-    $title = "Les Recettes de " . $user['user_name'];
+    $title = "Les Recettes de " . $users['user_name'];
     ob_start();
     include '../app/views/recipes/index.php';
     $content = ob_get_clean();
@@ -70,7 +70,7 @@ function showAction(PDO $conn, int $id)
 }
 /*function searchAction(PDO $conn, string $query)
 {
-     on va cherhcer  la fonction dans le dossier models 
+    on va cherhcer  la fonction dans le dossier models 
     include_once '../app/models/recipesModel.php';
     $recipes = RecipesModel\searchByName($conn, $query);
 
@@ -85,7 +85,7 @@ function showAction(PDO $conn, int $id)
 }
 */
 
-function searchAction(PDO $conn): void
+function searchAction(PDO $conn,string $query ): void
 {
     include_once '../app/models/recipesModel.php';
 
