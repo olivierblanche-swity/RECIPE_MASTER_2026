@@ -65,13 +65,13 @@ function showAction(PDO $conn, int $id)
     include '../app/views/recipes/show.php';
     $content = ob_get_clean();
 }
-function searchAction(PDO $conn, string $query)
+/*function searchAction(PDO $conn, string $query)
 {
-    /*  on va cherhcer  la fonction dans le dossier models */
+     on va cherhcer  la fonction dans le dossier models 
     include_once '../app/models/recipesModel.php';
     $recipes = RecipesModel\searchByName($conn, $query);
 
-    /* on lance le tampon et on inclu la vue dedans  */
+    
     global $content, $title, $searchQuery;
     $title = "Résultats de recherche pour : " . $query;
     $searchQuery = $query;
@@ -80,7 +80,8 @@ function searchAction(PDO $conn, string $query)
     include '../app/views/recipes/results.php';
     $content = ob_get_clean();
 }
-/* fonction pour la recherche avancée avec plusieurs mots clés
+*/
+
 function searchAction(PDO $conn): void
 {
     include_once '../app/models/recipesModel.php';
@@ -103,4 +104,4 @@ function searchAction(PDO $conn): void
     include '../app/views/recipes/results.php';
     $content = ob_get_clean();
 }
- */
+ 

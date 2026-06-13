@@ -61,14 +61,14 @@ function countRecipes(PDO $conn): int
 {
     $sql = "SELECT COUNT(*) FROM recipes";
     $rs = $conn->query($sql);
-    
+
     return (int) $rs->fetchColumn();
 }
 
 
 function findAllByUserId(PDO $conn, int $id): array
 {
-    
+
     $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(DISTINCT rt.value),1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
             FROM recipes r
             JOIN users u ON r.user_id = u.id
@@ -89,7 +89,7 @@ function findAllByUserId(PDO $conn, int $id): array
 
 function findAllRecipesByUserId(PDO $conn, int $id): array
 {
-    
+
     $sql = "SELECT r.id AS recipe_id, r.name AS recipe_name, r.picture AS recipe_picture, r.description, r.created_at, u.name AS user_name, ROUND(AVG(DISTINCT rt.value),1) AS average_rating, COUNT(DISTINCT c.id) AS comment_count
             FROM recipes r
             JOIN users u ON r.user_id = u.id
@@ -147,12 +147,12 @@ function searchByName(PDO $conn, string $query): array
 
 
 
-/* 
-fonction de recherche avancée qui prend en compte les mots séparés par des espaces dans la requete de recherche
+
+
 
 function searchByWords(PDO $conn, string $query): array
 {
-    
+
     $words = explode(' ', trim($query));
 
     $conditions = [];
@@ -184,9 +184,9 @@ function searchByWords(PDO $conn, string $query): array
             JOIN users u ON r.user_id = u.id
             LEFT JOIN ratings rt ON r.id = rt.recipe_id
             LEFT JOIN comments c ON r.id = c.recipe_id
-            WHERE " . implode(' AND ', $conditions) . "  and pour si on veut les 2 or si c est l un ou l autre
+            WHERE " . implode(' AND ', $conditions) . "
             GROUP BY r.id
-            ORDER BY r.created_at DESC";
+            ORDER BY r.created_at DESC;";
 
     $rs = $conn->prepare($sql);
 
@@ -198,7 +198,7 @@ function searchByWords(PDO $conn, string $query): array
 
     $recipes = $rs->fetchAll(PDO::FETCH_ASSOC);
     $rs->closeCursor();
+    unset($rs);
 
     return $recipes;
 }
- */
