@@ -11,7 +11,7 @@
         <li>
             <a
                 class="hover:text-white hover:bg-yellow-600 px-2 block"
-                href="?categories=show&id=<?php echo $category['categoryID']; ?>"><?php echo $category['name']; ?></a>
+                href="?categories=show&id=<?php echo htmlspecialchars($category['categoryID']); ?>"><?php echo htmlspecialchars($category['name']); ?></a>
         </li>
     <?php endforeach; ?>
 </ul>

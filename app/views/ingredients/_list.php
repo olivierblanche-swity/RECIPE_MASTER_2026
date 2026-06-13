@@ -4,7 +4,7 @@
     <h2 class="text-2xl font-bold mb-4">Ingrédients</h2>
     <ul class="list-disc pl-5">
         <?php foreach ($ingredients as $ingredient): ?>
-            <li><?php echo $ingredient['quantity'] . ' ' . $ingredient['unit'] . ' de ' . $ingredient['ingredient_name']; ?></li>
+            <li><?php echo htmlspecialchars($ingredient['quantity']) . ' ' . htmlspecialchars($ingredient['unit']) . ' de ' . htmlspecialchars($ingredient['ingredient_name']); ?></li>
         <?php endforeach; ?>
         <!-- ... (autres ingrédients) ... -->
     </ul>
